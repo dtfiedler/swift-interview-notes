@@ -1,4 +1,8 @@
 # Swift Interview Notes
+##### Table of Contents  
+[Struct vs. Class](#structvsclass)  
+
+<a name="structvsclass"></a>
 ## Struct vs. Class:
 Classes – reference types (create instances, when accessed pointed to memory allocation for that instance)
 Structs – value type objects
