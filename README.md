@@ -80,6 +80,7 @@ print("Here's a random number: \(generator.random())")
 ## Delegates
 
 ## Generics
+Swift language provides ‘Generic’ features to write flexible and reusable functions and types. Generics are used to avoid duplication and to provide abstraction. Swift standard libraries are built with generics code. Swifts ‘Arrays’ and ‘Dictionary’ types belong to generic collections. With the help of arrays and dictionaries, the arrays are defined to hold ‘Int’ values and ‘String’ values or any other types.
 
 ### Generic Data types:
 
@@ -89,7 +90,23 @@ print("Here's a random number: \(generator.random())")
 
 ## Architecture Patterns
 
-## Observables
+## Observables/Oberservers
+
+### Property Observers
+
+```
+ var value: Double = 0.0 {
+    // right before we change the value of the property
+    willSet {
+        print(“Old value: \(value)”)
+    }
+    // is called inmediatle after we assign a 
+    // value to the stored property, after the value is assigned
+    didSet {
+        print(“New value: \(value)”)
+    }
+ }
+ ```
 
 ## Dependency Managers
 
@@ -114,15 +131,15 @@ Example:
 var myOptional: String? //with the ? at the end this means the value could be nil
 
 if let notNilString = myOptional {
-    //here we know the value is not nil and define logic and we can use 
-    //notNilString going forward or we could use myOptional! 
-    //(since we know it's not nil)
+    // here we know the value is not nil and define logic and we can use 
+    // notNilString going forward or we could use myOptional! 
+    // (since we know it's not nil)
 } else {
     //here we know the value is nil, so can do something different 
 }
 
-//above is is better than assuming myOptional will not be nil when we want to use it
-//b/cwe have no check that myOptional is not nil, which could cause a crash later!
+// above is is better than assuming myOptional will not be nil when we want to use it
+// b/c we have no check that myOptional is not nil, which could cause a crash later!
 let notNilString = myOptional! 
 ```
 ## Classes
@@ -132,3 +149,49 @@ let notNilString = myOptional!
 - ```class```: is how you create class methods in objective C, and they can be overriden by a subclass.
 - ```final```: it’s an alias for static in methods, but you can also use it before the declaration of a class to make it immutable.
 For classes, in general always use “static” to create type methods, the only time you should use “class” keyword is if your subclass really needs to override it.
+
+## Tuples
+Tuples are ordered sets of values for specific purposes
+Example:
+```
+var person = ("Sasha", "Blumenfeld")
+var firstName = person.0 // Sasha
+var lastName = person.1 // Blumenfeld
+```
+
+OR:
+
+```
+var person = (firstName: "Sasha", lastName: "Blumenfeld")
+var firstName = person.firstName // Sasha
+var lastName = person.lastName // Blumenfeld
+```
+
+OR:
+
+```
+var origin = (x: 0, y: 0)
+var point = origin
+point.x = 3
+point.y = 5
+print(origin) // (0, 0)
+print(point) // (3, 5)
+```
+
+## Error Handling
+
+## Type Alises
+
+## Access Control
+There are 5 access levels:
+
+- ```Open ```- Is the highest access level or the least restrictive access level. You can subclass classes marked as open.
+- ```Public ```- Open and public enable code written in a source file to be used anywhere within a module as well as from another module that imports it. You can use classes marked with Public but you can’t subclass them.
+- ```Internal```- Enables entities to be used within any source file from their defining module, but not in any source file outside of the module. This is the default level of access.
+- ```Fileprivate``` — Allows you to restrict the use of an entity within its defining source file.
+- ```Private ```- Is the most restrictive access level. This means that the use of an entity is restricted to an enclosing declaration. For example, a private stored property can only be used within its class.
+
+Access Control is most useful in two particular cases when you are writing frameworks or writing tests.
+
+## Strong vs. Weak
+By default any references to an object are strong, to help combat the reference cycles that may arise, ARC also allows for “weak” references, a weak reference is one that does not keep a strong hold on the instance it refers to. And doesn’t stop ARC from disposing of it.To use it we add the weak keyword to our store property declaration interface builder outlets, are created as weak stored properties by default, this is because of view controllers maintain a reference to the outlet and the outlet maintains a reference to the view controller. All properties with weak references must be optional types and by definition must be a variable so that they can be set to nil.
