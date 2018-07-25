@@ -154,6 +154,11 @@ Structs – value type objects
 - Structs are preferred to hold small amounts of data, not so much logic
 - B/c Structs are value types, less worry about memory leaks, thread collision (altering same reference of an object)
 - The structure does not need to inherit properties or behavior from another existing type.
+- Classes allow you to do things that Structs cannot:
+    * Inheritance enables one class to inherit the characteristics of another.
+    * Type casting enables you to check and interpret the type of a class instance at runtime.
+    * Deinitializers enable an instance of a class to free up any resources it has assigned.
+    * Reference counting allows more than one reference to a class instance.
 
 Examples of good candidates for structures include:
 - The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.
