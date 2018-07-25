@@ -14,6 +14,12 @@ Examples of good candidates for structures include:
 
 In all other cases, define a class, and create instances of that class to be managed and passed by reference. In practice, this means that most custom data constructs should be classes, not structures.
 
+Another explanation:
+
+_When you make a copy of a value type, it copies all the data from the thing you are copying into the new variable. They are 2 separate things and changing one does not affect the other._
+
+_When you make a copy of a reference type, the new variable refers to the same memory location as the thing you are copying. This means that changing one will change the other since they both refer to the same memory location._
+
 ## Protocols:
 
 ### Protocol Properties/Values
@@ -71,10 +77,58 @@ let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
 ```
 
+## Delegates
+
 ## Generics
 
 ### Generic Data types:
 
 ### Generic Functions:
 
+## Multi-threading/Queues
 
+## Architecture Patterns
+
+## Observables
+
+## Dependency Managers
+
+## Local Storage
+
+## Schemes
+
+## Testing
+### Unit Testing
+### UI Testing
+
+## Locations
+
+## Localizable Strings
+
+## Optionals
+In many languages, when you encounter the absence of data, you have to deal with it by writing another path for your code. There is no indication that the data doesn’t exist so at many points in your program you have to write defensive code. This isn’t the situation in Swift, and optional types are how Apple handles the absence of data in an application.
+
+Example:
+
+```
+var myOptional: String? //with the ? at the end this means the value could be nil
+
+if let notNilString = myOptional {
+    //here we know the value is not nil and define logic and we can use 
+    //notNilString going forward or we could use myOptional! 
+    //(since we know it's not nil)
+} else {
+    //here we know the value is nil, so can do something different 
+}
+
+//above is is better than assuming myOptional will not be nil when we want to use it
+//b/cwe have no check that myOptional is not nil, which could cause a crash later!
+let notNilString = myOptional! 
+```
+## Classes
+### Static vs. Class vs. Final
+
+- ```static```: in value types, structs for example, this keyword mean that a method is associated at the type level rather than an instance. In reference types, it also means that the method is associated at the type level of the class but it also doesn’t allow that this method can be overriden for a subclass.
+- ```class```: is how you create class methods in objective C, and they can be overriden by a subclass.
+- ```final```: it’s an alias for static in methods, but you can also use it before the declaration of a class to make it immutable.
+For classes, in general always use “static” to create type methods, the only time you should use “class” keyword is if your subclass really needs to override it.
