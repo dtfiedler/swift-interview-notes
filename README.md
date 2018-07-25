@@ -1,6 +1,7 @@
 # Swift Interview Notes
 ##### Table of Contents  
 [Struct vs. Class](#structvsclass)  
+[Protocols](#protocols)
 
 <a name="structvsclass"></a>
 ## Struct vs. Class:
@@ -24,6 +25,7 @@ _When you make a copy of a value type, it copies all the data from the thing you
 
 _When you make a copy of a reference type, the new variable refers to the same memory location as the thing you are copying. This means that changing one will change the other since they both refer to the same memory location._
 
+<a name="protocols"></a>
 ## Protocols:
 
 ### Protocol Properties/Values
@@ -81,8 +83,10 @@ let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
 ```
 
+<a name="delegates"></a>
 ## Delegates
 
+<a name="generics"></a>
 ## Generics
 Swift language provides ‘Generic’ features to write flexible and reusable functions and types. Generics are used to avoid duplication and to provide abstraction. Swift standard libraries are built with generics code. Swifts ‘Arrays’ and ‘Dictionary’ types belong to generic collections. With the help of arrays and dictionaries, the arrays are defined to hold ‘Int’ values and ‘String’ values or any other types.
 
@@ -90,10 +94,13 @@ Swift language provides ‘Generic’ features to write flexible and reusable fu
 
 ### Generic Functions:
 
+<a name="threading"></a>
 ## Multi-threading/Queues
 
+<a name="archipatterns"></a>
 ## Architecture Patterns
 
+<a name="observers"></a>
 ## Observables/Oberservers
 
 ### Property Observers
@@ -112,20 +119,27 @@ Swift language provides ‘Generic’ features to write flexible and reusable fu
  }
  ```
 
+<a name="dependencymanagers"></a>
 ## Dependency Managers
 
+<a name="localstorage"></a>
 ## Local Storage
 
+<a name="schemes"></a>
 ## Schemes
 
+<a name="testing"></a>
 ## Testing
 ### Unit Testing
 ### UI Testing
 
-## Locations
+<a name="location"></a>
+## Location
 
+<a name="localstrings"></a>
 ## Localizable Strings
 
+<a name="optionals"></a>
 ## Optionals
 In many languages, when you encounter the absence of data, you have to deal with it by writing another path for your code. There is no indication that the data doesn’t exist so at many points in your program you have to write defensive code. This isn’t the situation in Swift, and optional types are how Apple handles the absence of data in an application.
 
@@ -146,15 +160,16 @@ if let notNilString = myOptional {
 // b/c we have no check that myOptional is not nil, which could cause a crash later!
 let notNilString = myOptional! 
 ```
-## Classes
-### Static vs. Class vs. Final
 
-- ```static```: in value types, structs for example, this keyword mean that a method is associated at the type level rather than an instance. In reference types, it also means that the method is associated at the type level of the class but it also doesn’t allow that this method can be overriden for a subclass.
-- ```class```: is how you create class methods in objective C, and they can be overriden by a subclass.
-- ```final```: it’s an alias for static in methods, but you can also use it before the declaration of a class to make it immutable.
-For classes, in general always use “static” to create type methods, the only time you should use “class” keyword is if your subclass really needs to override it.
 
-## Tuples
+<a name="datatypes"></a>
+## Data Types
+
+### Classes
+
+### Structs
+
+### Tuples
 Tuples are ordered sets of values for specific purposes
 Example:
 ```
@@ -182,10 +197,24 @@ print(origin) // (0, 0)
 print(point) // (3, 5)
 ```
 
+### Static vs. Class vs. Final Declarations
+
+- ```static```: in value types, structs for example, this keyword mean that a method is associated at the type level rather than an instance. In reference types, it also means that the method is associated at the type level of the class but it also doesn’t allow that this method can be overriden for a subclass.
+- ```class```: is how you create class methods in objective C, and they can be overriden by a subclass.
+- ```final```: it’s an alias for static in methods, but you can also use it before the declaration of a class to make it immutable.
+For classes, in general always use “static” to create type methods, the only time you should use “class” keyword is if your subclass really needs to override it.
+
+### Strong vs. Weak Properties
+By default any references to an object are strong, to help combat the reference cycles that may arise, ARC also allows for “weak” references, a weak reference is one that does not keep a strong hold on the instance it refers to. And doesn’t stop ARC from disposing of it.To use it we add the weak keyword to our store property declaration interface builder outlets, are created as weak stored properties by default, this is because of view controllers maintain a reference to the outlet and the outlet maintains a reference to the view controller. All properties with weak references must be optional types and by definition must be a variable so that they can be set to nil.
+
+
+<a name="errorhandling"></a>
 ## Error Handling
 
+<a name="typealiases"></a>
 ## Type Alises
 
+<a name="accesscontrol"></a>
 ## Access Control
 There are 5 access levels:
 
@@ -196,6 +225,3 @@ There are 5 access levels:
 - ```Private ```- Is the most restrictive access level. This means that the use of an entity is restricted to an enclosing declaration. For example, a private stored property can only be used within its class.
 
 Access Control is most useful in two particular cases when you are writing frameworks or writing tests.
-
-## Strong vs. Weak
-By default any references to an object are strong, to help combat the reference cycles that may arise, ARC also allows for “weak” references, a weak reference is one that does not keep a strong hold on the instance it refers to. And doesn’t stop ARC from disposing of it.To use it we add the weak keyword to our store property declaration interface builder outlets, are created as weak stored properties by default, this is because of view controllers maintain a reference to the outlet and the outlet maintains a reference to the view controller. All properties with weak references must be optional types and by definition must be a variable so that they can be set to nil.
