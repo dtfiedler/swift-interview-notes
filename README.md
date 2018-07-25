@@ -1,29 +1,7 @@
 # Swift Interview Notes
 ##### Table of Contents  
-[Struct vs. Class](#structvsclass)  
-[Protocols](#protocols)
-
-<a name="structvsclass"></a>
-## Struct vs. Class:
-Classes – reference types (create instances, when accessed pointed to memory allocation for that instance)
-Structs – value type objects
-- Structs are preferred for relatively small and copiable objects (copying is safer then multiple references)
-- Structs are preferred to hold small amounts of data, not so much logic
-- B/c Structs are value types, less worry about memory leaks, thread collision (altering same reference of an object)
-- The structure does not need to inherit properties or behavior from another existing type.
-
-Examples of good candidates for structures include:
-- The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.
-- A way to refer to ranges within a series, perhaps encapsulating a start property and a length property, both of type Int.
-- A point in a 3D coordinate system, perhaps encapsulating x, y and z properties, each of type Double.
-
-In all other cases, define a class, and create instances of that class to be managed and passed by reference. In practice, this means that most custom data constructs should be classes, not structures.
-
-Another explanation:
-
-_When you make a copy of a value type, it copies all the data from the thing you are copying into the new variable. They are 2 separate things and changing one does not affect the other._
-
-_When you make a copy of a reference type, the new variable refers to the same memory location as the thing you are copying. This means that changing one will change the other since they both refer to the same memory location._
+- [Struct vs. Class](#structvsclass)  
+- [Protocols](#protocols)
 
 <a name="protocols"></a>
 ## Protocols:
@@ -168,6 +146,27 @@ let notNilString = myOptional!
 ### Classes
 
 ### Structs
+
+### Struct vs. Class:
+Classes – reference types (create instances, when accessed pointed to memory allocation for that instance)
+Structs – value type objects
+- Structs are preferred for relatively small and copiable objects (copying is safer then multiple references)
+- Structs are preferred to hold small amounts of data, not so much logic
+- B/c Structs are value types, less worry about memory leaks, thread collision (altering same reference of an object)
+- The structure does not need to inherit properties or behavior from another existing type.
+
+Examples of good candidates for structures include:
+- The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.
+- A way to refer to ranges within a series, perhaps encapsulating a start property and a length property, both of type Int.
+- A point in a 3D coordinate system, perhaps encapsulating x, y and z properties, each of type Double.
+
+In all other cases, define a class, and create instances of that class to be managed and passed by reference. In practice, this means that most custom data constructs should be classes, not structures.
+
+Another explanation:
+
+_When you make a copy of a value type, it copies all the data from the thing you are copying into the new variable. They are 2 separate things and changing one does not affect the other._
+
+_When you make a copy of a reference type, the new variable refers to the same memory location as the thing you are copying. This means that changing one will change the other since they both refer to the same memory location._
 
 ### Tuples
 Tuples are ordered sets of values for specific purposes
